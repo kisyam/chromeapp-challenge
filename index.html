@@ -4,10 +4,19 @@
     <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
   </head>
-
   <body>
-    <h1>hello!</h1>
-    <h2>Hello!</h2>
-    <script type="module" src="src/second.js"></script>
+    <h1>Random Number Game</h1>
+    <h3>
+      Generate a number between 0 and
+      <input class="maxNumber" type="number" />
+    </h3>
+    <form id="answer-form">
+      <label for="guessNumber">Guess the number :</label>
+      <input class="guessNumber" id="guessNumber" type="text" />
+      <input type="submit" value="Play!" />
+    </form>
+    <p id="resultText"></p>
+    <h3 id="resultAnswer"></h3>
+    <script type="module" src="src/third.js"></script>
   </body>
 </html>

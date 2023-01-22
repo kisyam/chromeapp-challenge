@@ -1,5 +1,6 @@
 import "./styles.css";
 const body = document.querySelector("body");
+console.log(window.innerWidth);
 
 function changeBackground() {
   const bodyWidth = window.innerWidth;

@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"4ZjVw":[function(require,module,exports) {
+})({"l0zr2":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "f0ffbe317cf86253";
+module.bundle.HMR_BUNDLE_ID = "ea714f81cbb0b07a";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -531,22 +531,35 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"af6QU":[function(require,module,exports) {
-var _stylesCss = require("./styles.css");
-const body = document.querySelector("body");
-console.log(window.innerWidth);
-function changeBackground() {
-    const bodyWidth = window.innerWidth;
-    if (bodyWidth > 900) {
-        body.classList.remove("purple");
-        body.classList.add("yellow");
-    } else if (bodyWidth > 700) {
-        body.classList.remove("yellow");
-        body.classList.add("purple");
-    } else body.classList.remove("purple");
+},{}],"fbspu":[function(require,module,exports) {
+const maxNumber = document.querySelector(".maxNumber");
+const answerNumber = document.querySelector("#guessNumber");
+const answerForm = document.querySelector("#answer-form");
+const resultText = document.querySelector("#resultText");
+const resultAnswer = document.querySelector("#resultAnswer");
+function answerSubmit(event) {
+    event.preventDefault();
+    const randomNumber = Math.ceil(Math.random() * maxNumber.value);
+    if (maxNumber.value < 0 || parseInt(answerNumber.value) < 0) {
+        alert("Please fill plus number");
+        return resetNumber();
+    }
+    if (parseInt(answerNumber.value) === randomNumber) {
+        console.log(randomNumber);
+        resultText.innerText = `You chose : ${answerNumber.value}, the machine chose : ${randomNumber}.`;
+        resultAnswer.innerText = "You Win!";
+    } else {
+        console.log(randomNumber);
+        resultText.innerText = `You chose : ${answerNumber.value}, the machine chose : ${randomNumber}.`;
+        resultAnswer.innerText = "You Lost!";
+    }
 }
-window.addEventListener("resize", changeBackground);
+function resetNumber() {
+    maxNumber.value = "";
+    answerNumber.value = "";
+}
+answerForm.addEventListener("submit", answerSubmit);
 
-},{"./styles.css":"lW6qc"}],"lW6qc":[function() {},{}]},["4ZjVw","af6QU"], "af6QU", "parcelRequire6d7b")
+},{}]},["l0zr2","fbspu"], "fbspu", "parcelRequire6d7b")
 
-//# sourceMappingURL=index.7cf86253.js.map
+//# sourceMappingURL=index.cbb0b07a.js.map
