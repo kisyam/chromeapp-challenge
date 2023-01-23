@@ -532,6 +532,7 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"fbspu":[function(require,module,exports) {
+var _stylesCss = require("./styles.css");
 const maxNumber = document.querySelector(".maxNumber");
 const answerNumber = document.querySelector("#guessNumber");
 const answerForm = document.querySelector("#answer-form");
@@ -539,27 +540,48 @@ const resultText = document.querySelector("#resultText");
 const resultAnswer = document.querySelector("#resultAnswer");
 function answerSubmit(event) {
     event.preventDefault();
-    const randomNumber = Math.ceil(Math.random() * maxNumber.value);
-    if (maxNumber.value < 0 || parseInt(answerNumber.value) < 0) {
-        alert("Please fill plus number");
-        return resetNumber();
+    const randomNumber = Math.ceil(Math.random() * (parseInt(maxNumber.value) + 1)) - 1;
+    console.log(randomNumber);
+    if (!maxNumber.value || !answerNumber.value) {
+        resultText.classList.add("hidden");
+        resultAnswer.classList.add("hidden");
+        alert("Please enter a number");
+        return;
+    }
+    if (parseInt(maxNumber.value) < 0) {
+        resultText.classList.add("hidden");
+        resultAnswer.classList.add("hidden");
+        alert("No Minus number");
+        maxNumber.value = "";
+        return;
+    } else if (parseInt(answerNumber.value) < 0) {
+        resultText.classList.add("hidden");
+        resultAnswer.classList.add("hidden");
+        alert("No Minus number");
+        answerNumber.value = "";
+        return;
+    }
+    if (parseInt(answerNumber.value) > parseInt(maxNumber.value)) {
+        resultText.classList.add("hidden");
+        resultAnswer.classList.add("hidden");
+        answerNumber.value = "";
+        alert("must be smaller than maxNumber");
+        return;
     }
     if (parseInt(answerNumber.value) === randomNumber) {
-        console.log(randomNumber);
+        resultText.classList.remove("hidden");
+        resultAnswer.classList.remove("hidden");
         resultText.innerText = `You chose : ${answerNumber.value}, the machine chose : ${randomNumber}.`;
         resultAnswer.innerText = "You Win!";
     } else {
-        console.log(randomNumber);
+        resultText.classList.remove("hidden");
+        resultAnswer.classList.remove("hidden");
         resultText.innerText = `You chose : ${answerNumber.value}, the machine chose : ${randomNumber}.`;
         resultAnswer.innerText = "You Lost!";
     }
 }
-function resetNumber() {
-    maxNumber.value = "";
-    answerNumber.value = "";
-}
 answerForm.addEventListener("submit", answerSubmit);
 
-},{}]},["l0zr2","fbspu"], "fbspu", "parcelRequire6d7b")
+},{"./styles.css":"lW6qc"}],"lW6qc":[function() {},{}]},["l0zr2","fbspu"], "fbspu", "parcelRequire6d7b")
 
 //# sourceMappingURL=index.cbb0b07a.js.map
